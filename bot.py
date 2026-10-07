@@ -1,4 +1,3 @@
-import os
 import sqlite3
 import asyncio
 
@@ -433,8 +432,11 @@ async def save_content(
 
     message = update.message
 
-    user_id = update.effective_user.id
+    user = update.effective_user
+    if user is None:
+        return
 
+    user_id = user.id
     # IMPORTANT:
     # Sirf owner / allowed users save kar sakte hain
 
