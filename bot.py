@@ -927,6 +927,10 @@ async def myid(
 # MAIN
 # ==========================================
 
+
+async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
+    print("ERROR:", repr(context.error))
+
 def main():
 
     if not BOT_TOKEN:
@@ -943,6 +947,8 @@ def main():
         .token(BOT_TOKEN)
         .build()
     )
+
+    app.add_error_handler(error_handler)
 
     # Commands
 
